@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Calculator</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ <link href="{{url_for('static', filename='css/ui_calc.css')}}" rel="stylesheet">
+ <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+ <link rel="shortcut icon" href="{{url_for('static', filename='img/favicon.ico')}}" type="image/x-icon">
+</head>
+<body>
+ <div class="box">
+   <div class="screen">
+     <div class="main-screen" id="output">0</div>
+     <div class="sub-screen" id="output2"></div>
+   </div>
+   <input type="hidden" id="num1">
+   <input type="hidden" id="operator">
+   <input type="hidden" id="num2">
+   <input type="hidden" id="temp">
+   <div class="container-fluid">
+     <div class="buttons">
+       <button class="btn-clear btn btn-danger" id="clearButton">C</button>
+       <button class="btn btn-warning" >A</button>
+       <button class="btn-operate btn btn-default" value="/">/</button>
+       <button class="btn-operate btn btn-default" value="*">x</button>
+     </div>
+     <div class="buttons">
+       <button class="nums btn btn-default" value="7">7</button>
+       <button class="nums btn btn-default" value="8">8</button>
+       <button class="nums btn btn-default" value="9">9</button>
+       <button class="btn-operate btn btn-default" value="-">-</button>
+     </div>
+     <div class="buttons">
+       <button class="nums btn btn-default" value="4">4</button>
+       <button class="nums btn btn-default" value="5">5</button>
+       <button class="nums btn btn-default" value="6">6</button>
+       <button class="btn-operate btn btn-default" value="+">+</button>
+     </div>
+     <div class="buttons">
+       <button class="nums btn btn-default" value="1">1</button>
+       <button class="nums btn btn-default" value="2">2</button>
+       <button class="nums btn btn-default" value="3">3</button>
+       <button class="btn-equal btn btn-info" id="resultButton">=</button>
+     </div>
+     <div class="buttons">
+       <button class="nums btn-zero btn btn-default" value="0">0</button>
+       <button class="nums btn btn-default" value=".">.</button>
+     </div>
+   </div>
+
+     <a href="/move/home">뒤로가기</a>
+
+
+ </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <!--<script src="{{url_for('static', filename='js/ui_calc.js')}}"></script> -->
+ <script type="text/javascript">
+   var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    let mainOutput = $('#output');
+    let subOutput = $('#output2');
+    let op = $('#operator');
+    let num1 = $('#num1');
+    let num2 = $('#num2');
+    let temp = $('#temp');
+    let clearData = ()=>{
+        num1.val('')
+        op.val('')
+        num2.val('')
+        temp.val('')
+    };
+    let clearOutput = ()=>{
+        mainOutput.html('');
+        subOutput.html('');
+    };
+    let digitError = ()=>{
+        mainOutput.html(0);
+        subOutput.html('Reach Digit Limit');
+        temp.val(0);
+    };
+    $('.btn-default').click(function(e){
+
+        if (('+-*!/').indexOf(mainOutput.html()) != -1){
+            mainOutput.html('')
+        }
+        if ($(this).val() == '.'
+            && (mainOutput.html()).indexOf('.') != -1)
+            return;
+        if (mainOutput.html() == '0'
+            || subOutput.html() == 'Reach Digit Limit'){
+            clearOutput();
+        }
+        if(temp.val() !== ''){
+            clearOutput();
+            clearData();
+        }
+        clearData();
+        mainOutput.html($(this).val());
+        subOutput.append($(this).val());
+        if(mainOutput.html().length > 12){
+            digitError();
+        }
+    });
+    $('#clearButton').click(e=>{
+        mainOutput.html('0');
+        subOutput.html('');
+        clearData();
+    });
+    $('.btn-equal').click(function (e) {
+        e.preventDefault();
+        $.getJSON($SCRIPT_ROOT+'/ui_calc',
+            {stmt:$('#output2').text()},
+            d=>{
+                alert('연산결과: '+d.result)
+                $('#output').html(d.result)
+
+            });
+    });
+
+ </script>
+</body>
+</html>

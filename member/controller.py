@@ -3,7 +3,7 @@ from member.model import MemberDAO
 class MemberController:
     def __init__(self):
         self._dao = MemberDAO()
-        self._dao.create()
+        # self._dao.create()
         # self._dao.insert_many()
 
 
