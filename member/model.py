@@ -1,9 +1,21 @@
 import sqlite3
+import os
 
 class MemberDAO:
 
     def __init__(self):
         self._conn = sqlite3.connect('sqlite.db')
+
+    @staticmethod
+    def db_path():
+        path = os.getcwd()
+        basename = os.path.basename(os.getcwd())
+        if(basename=='member'):
+            db_path = path.replace(basename, '')
+        else:
+            db_path = basename
+        print('db 경로'+ db_path)
+        return db_path
 
     def create(self):
         sql = """
