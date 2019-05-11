@@ -14,7 +14,8 @@ def login():
     password = request.form['password']
     print('로그인 들어온 아이디 {}, 비번 {}'.format(userid, password))
     c = MemberController()
-    c.login(userid, password)
+    view = c.login(userid, password)
+    return render_template(view)
 
 if __name__ == '__main__':
     app.run()

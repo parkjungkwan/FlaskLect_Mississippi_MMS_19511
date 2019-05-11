@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+
+<h1>Grid Container</h1>
+
+<p>A Grid Container consists of grid items arranged in columns and rows</p>
+
+<div class="grid-container">
+
+  <div>1<a href="/move/ui_calc">UI 계산기</a></div>
+  <div>2<a href="/move/ai_calc">AI 계산기</a></div>
+  <div>3<a href="/move/blood"> 혈중 지방농도 체크</a> </div>
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>
+  <div>7</div>
+  <div>8</div>
+</div>
+
+<p>Direct child elements(s) of the grid container automatically becomes grid items.</p>
+
+</body>
+</html>
