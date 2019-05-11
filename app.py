@@ -19,13 +19,11 @@ def login():
     view = c.login(userid, password)
     return render_template(view)
 
-@app.route('/move/ui_calc')
-def move_ui_calc():
-    return render_template('ui_calc.html')
+@app.route('/move/<path>')
+def move(path):
+    return render_template('{}.html'.format(path))
 
-@app.route('/move/home')
-def move_home():
-    return render_template('home.html')
+
 
 @app.route('/ui_calc')
 def ui_calc():
@@ -50,9 +48,7 @@ def ui_calc():
 
     return jsonify(result= result)
 
-@app.route('/move/ai_calc')
-def move_ai_calc():
-    return render_template('ai_calc.html')
+
 
 # /ai_calc
 # print('계산기에 들어온 num1 = {}, num2 = {}, opcode = {}'.format(num1, num2, opcode))
@@ -67,6 +63,13 @@ def ai_calc():
     render_params = {}
     render_params['result'] = result
     return render_template('ai_calc.html', **render_params)
+
+
+@app.route('/blood', methods=['POST'])
+def blood():
+    weight = request.form['weight']
+    age = request.form['age']
+    print('몸무게 : {}, 나이 : {}'.format(weight,  age))
 
 
 if __name__ == '__main__':

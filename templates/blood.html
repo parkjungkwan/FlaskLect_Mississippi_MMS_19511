@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html>
 <body>
 
+<h2>HTML Forms</h2>
+
+<form action="/blood" method="POST">
+  몸무게:<br>
+  <input type="text" name="weight" >
+  <br>
+  나이:<br>
+  <input type="text" name="age" >
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+{%  if result %}
+<p>결과 : {{result}}</p>
+{% endif %}
+
+<a href="/move/home">뒤로가기</a>
 </body>
 </html>
