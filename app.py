@@ -63,7 +63,10 @@ def ai_calc():
     opcode = request.form['opcode']
     print('계산기에 들어온 num1 = {}, num2 = {}, opcode = {}'.format(num1, num2, opcode))
     c = CalcController(num1, num2, opcode)
-    c.calc()
+    result = c.calc
+    render_params = {}
+    render_params['result'] = result
+    return render_template('ai_calc.html', **render_params)
 
 
 if __name__ == '__main__':
