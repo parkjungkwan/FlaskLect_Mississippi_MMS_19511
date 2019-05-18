@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--sepal_length=5.1&sepal_width=3.5&petal_length=1.4&petal_width=0.2-->
+    <img src="{{url_for('static', filename='img/iris_real.png') }}">
+    <img src="{{url_for('static', filename='img/iris.png') }}">
+    <form action="/iris" method="POST">
+      sepal_length:<br>
+      <input type="text" name="sepal_length" value="5.1">
+      <br>
+      sepal_width:<br>
+      <input type="text" name="sepal_width" value="3.5" >
+      <br>
+      petal_length:<br>
+      <input type="text" name="petal_length" value="1.4" >
+      <br>
+      petal_width:<br>
+      <input type="text" name="petal_width" value="0.2" >
+      <br>
+
+        <br>
+      <input type="submit" value="Submit">
+    </form>
+    {%  if result %}
+    <p>결과 : {{result}}</p>
+    {% endif %}
+</body>
+</html>
