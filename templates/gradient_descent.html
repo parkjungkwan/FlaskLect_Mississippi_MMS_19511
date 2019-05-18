@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<style>
+    #image{
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+    }
+    #image img{width:450px; height:450px;}
+</style>
+   <body/>
+<p>
+    경사 하강법(傾斜下降法, Gradient descent)은 1차 근삿값 발견용 최적화 <mark>알고리즘</mark>이다. <br>
+    기본 아이디어는 함수의 기울기(경사)를 구하여 기울기가 낮은 쪽으로 계속 이동시켜서 <br>
+    극값에 이를 때까지 반복시키는 것이다
+</p>
+<a href="/gradient_descent">경사하강법 그래프 보기</a>
+{%  if name %}
+<p>결과 </p>
+    <div id="image" >
+       <h1>{{ name }}</h1>
+      <img src="{{url_for('static', filename='img/gradient_descent.svg') }}">
+    </div>
+{% endif %}
+
+
+
+   </body>
+</html>

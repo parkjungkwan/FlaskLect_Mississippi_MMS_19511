@@ -1,42 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-}
-
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
-  text-align: center;
-  font-size: 30px;
-}
-</style>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<h1>Grid Container</h1>
-
-<p>A Grid Container consists of grid items arranged in columns and rows</p>
-
-<div class="grid-container">
-
-  <div>1<a href="/move/ui_calc">UI 계산기</a></div>
-  <div>2<a href="/move/ai_calc">AI 계산기</a></div>
-  <div>3<a href="/move/blood"> 혈중 지방농도 체크</a> </div>
-  <div>4</div>
-  <div>5</div>
-  <div>6</div>
-  <div>7</div>
-  <div>8</div>
+<div class="container">
+  <h2>머신러닝</h2>
+  <p>지도학습(supervised), 자율학습(Un-supervised), 강화학습(reinforcement)</p>
+  <table class="table">
+    <thead>
+      <tr class="danger">
+        <th>No. </th>
+        <th>예 제</th>
+        <th>프로세스</th>
+        <th>주요내용</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td>1. </td>
+        <td><a href="/move/ui_calc">UI 계산기</a> | <a href="/move/ai_calc">AI 계산기</a> </td>
+        <td>Modeling</td>
+        <td>모델 생성, 저장, 재활용</td>
+      </tr>
+      <tr class="warning">
+        <td>2. </td>
+        <td><a href="/move/blood"> 혈중 지방농도 체크</a></td>
+        <td>ML 지도학습</td>
+        <td></td>
+      </tr>
+      <tr >
+        <td>3. </td>
+        <td><a href="/move/gradient_descent">경사하강법</a></td>
+        <td>ML 알고리즘</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr class="warning">
+        <td>4. </td>
+        <td><a href="/move/blood"> 코스피 시세보기 </a></td>
+        <td>Dooley</td>
+        <td></td>
+      </tr>
+      <tr >
+        <td>5. </td>
+        <td><a href="/move/iris"> 아이리스 </a></td>
+        <td>Refs</td>
+        <td>bo@example.com</td>
+      </tr>
+      <tr class="warning">
+        <td>6. </td>
+        <td><a href="/move/cabbage"> 배추가격 예측 </a></td>
+        <td>Activeson</td>
+        <td>act@example.com</td>
+      </tr>
+    <tr class="warning">
+        <td>7. </td>
+        <td><a href="/move/chatbot"> 챗봇 </a></td>
+        <td>Activeson</td>
+        <td>act@example.com</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<p>Direct child elements(s) of the grid container automatically becomes grid items.</p>
 
 </body>
 </html>

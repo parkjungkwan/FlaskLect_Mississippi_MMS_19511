@@ -1,15 +1,14 @@
-from ai_calc.model import CalcModel
 import tensorflow as tf
 
 class CalcController:
 
     def __init__(self, num1, num2, opcode):
-        self._calc = CalcModel()
+        # self._calc = CalcModel()
         self._num1 = num1
         self._num2 = num2
         self._opcode = opcode
 
-    @property
+
     def calc(self):
         num1 = self._num1
         num2 = self._num2

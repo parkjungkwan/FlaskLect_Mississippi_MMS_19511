@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, jsonify
 from member.controller import MemberController
 from ai_calc.controller import CalcController
+from blood.model import BloodModel
 import re
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -59,7 +60,7 @@ def ai_calc():
     opcode = request.form['opcode']
     print('계산기에 들어온 num1 = {}, num2 = {}, opcode = {}'.format(num1, num2, opcode))
     c = CalcController(num1, num2, opcode)
-    result = c.calc
+    result = c.calc()
     render_params = {}
     render_params['result'] = result
     return render_template('ai_calc.html', **render_params)
@@ -70,6 +71,13 @@ def blood():
     weight = request.form['weight']
     age = request.form['age']
     print('몸무게 : {}, 나이 : {}'.format(weight,  age))
+    model = BloodModel('blood/data/data.txt')
+    raw_data = model.create_raw_data()
+    render_params = {}
+    value = model.create_model(raw_data,weight,age)
+    render_params['result'] = value
+    return render_template('blood.html', **render_params)
+
 
 
 if __name__ == '__main__':
