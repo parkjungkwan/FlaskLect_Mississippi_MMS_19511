@@ -4,6 +4,8 @@ from ai_calc.controller import CalcController
 from blood.model import BloodModel
 from gradient_descent.controller import  GradientDescentController
 from iris.controller import IrisController
+from cabbage.controller import CabbageController
+from kospi.controller import KospiController
 import re
 
 app = Flask(__name__)
@@ -94,7 +96,19 @@ def iris():
 
 @app.route('/cabbage', methods=['GET','POST'])
 def cabbage():
-    pass
+    ctrl = CabbageController()
+    result = ctrl.service_model()
+    render_params = {}
+    render_params['result'] = result
+    return render_template('cabbage.html', **render_params)
+
+@app.route('/kospi',methods=['GET','POST'])
+def kospi():
+    ctrl = KospiController()
+    kospi = ctrl.service()
+    render_params = {}
+    render_params['result'] = kospi
+    return render_template('kospi.html', **render_params)
 
 if __name__ == '__main__':
     app.run()

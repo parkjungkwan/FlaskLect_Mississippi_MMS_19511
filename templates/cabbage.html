@@ -6,8 +6,6 @@
 </head>
 <body>
 
-    <img src="{{url_for('static', filename='') }}">
-    <img src="{{url_for('static', filename='') }}">
  <!--# avg_temp, min_temp, max_temp, rain_fall
     - 평균 온도: 10
 - 최저 온도: -5
@@ -17,16 +15,16 @@
 -->
     <form action="/cabbage" method="POST">
       평균 온도:<br>
-      <input type="text" name="avg_temp" value="10">
+      <input type="text" name="avg_temp" value="">
       <br>
       최저 온도:<br>
-      <input type="text" name="min_temp" value="-5" >
+      <input type="text" name="min_temp" value="" >
       <br>
       최고 온도:<br>
-      <input type="text" name="max_temp" value="20" >
+      <input type="text" name="max_temp" value="" >
       <br>
       강수량:<br>
-      <input type="text" name="rain_fall" value="0.8" >
+      <input type="text" name="rain_fall" value="" >
       <br>
 
         <br>
