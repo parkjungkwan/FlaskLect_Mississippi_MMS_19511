@@ -92,5 +92,9 @@ def iris():
     result = ctrl.service_model()
     return render_template('iris.html', result=result)
 
+@app.route('/cabbage', methods=['GET','POST'])
+def cabbage():
+    pass
+
 if __name__ == '__main__':
     app.run()
