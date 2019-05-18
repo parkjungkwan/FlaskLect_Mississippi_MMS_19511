@@ -48,6 +48,7 @@ class CalcModel:
         print('TF 곱셈결과 {}'.format(result))
         saver.save(sess, './saved_mul/model', global_step=1000)
 
+
     def create_div_model(self):
         w1 = tf.placeholder(tf.float32, name='w1')
         w2 = tf.placeholder(tf.float32, name='w2')

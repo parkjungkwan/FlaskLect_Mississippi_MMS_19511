@@ -3,6 +3,7 @@ from member.controller import MemberController
 from ai_calc.controller import CalcController
 from blood.model import BloodModel
 from gradient_descent.controller import  GradientDescentController
+from iris.controller import IrisController
 import re
 
 app = Flask(__name__)
@@ -85,6 +86,11 @@ def gradient_descent():
     name = ctrl.service_model()
     return render_template('gradient_descent.html',name = name)
 
+@app.route('/iris', methods=['GET','POST'])
+def iris():
+    ctrl = IrisController()
+    result = ctrl.service_model()
+    return render_template('iris.html', result=result)
 
 if __name__ == '__main__':
     app.run()

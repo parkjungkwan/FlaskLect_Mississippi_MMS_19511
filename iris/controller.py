@@ -3,10 +3,11 @@ import tensorflow as tf
 from keras.models import load_model
 from sklearn import datasets
 from flask_restful import reqparse
-
+from keras import backend as K
 class IrisController:
     def __init__(self):
         global model, graph, target_names
+        K.clear_session()
         model = load_model('iris/saved_model/iris_model.h5')
         graph = tf.get_default_graph()
         target_names = datasets.load_iris().target_names
