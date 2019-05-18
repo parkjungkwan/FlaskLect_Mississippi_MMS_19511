@@ -85,5 +85,6 @@ def gradient_descent():
     name = ctrl.service_model()
     return render_template('gradient_descent.html',name = name)
 
+
 if __name__ == '__main__':
     app.run()

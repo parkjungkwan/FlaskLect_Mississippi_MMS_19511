@@ -17,5 +17,12 @@ class IrisModel:
         model = Sequential()
         model.add(Dense(4, input_dim=4, activation='relu'))
         model.add(Dense(3, activation='softmax'))
-        model.compile()
+        model.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
+        model.fit(X, Y_1hot, epochs=300, batch_size=10)
+        print('모델 트레이닝 완료')
+        file_name = 'saved_model/iris_model.h5'
+        model.save(file_name)
+        print('모델 저장 완료')
+
+
 
