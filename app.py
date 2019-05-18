@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from member.controller import MemberController
 from ai_calc.controller import CalcController
 from blood.model import BloodModel
+from gradient_descent.controller import  GradientDescentController
 import re
 
 app = Flask(__name__)
@@ -78,7 +79,11 @@ def blood():
     render_params['result'] = value
     return render_template('blood.html', **render_params)
 
-
+@app.route('/gradient_descent', methods=['GET','POST'])
+def gradient_descent():
+    ctrl = GradientDescentController()
+    name = ctrl.service_model()
+    return render_template('gradient_descent.html',name = name)
 
 if __name__ == '__main__':
     app.run()
